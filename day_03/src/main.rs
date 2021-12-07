@@ -35,11 +35,11 @@ fn find_number_of_ones(data: &Vec<Vec<u32>>) -> Vec<u32> {
 }
 
 fn oxygen_rating(data: &Vec<Vec<u32>>) -> u32 {
-    let mut oxygen: u32 = 0;
+    let oxygen: u32;
     let mut o_list: Vec<Vec<u32>> = data.to_vec();
     while o_list.len() != 1 {
         let tmp: Vec<Vec<u32>> = process_oxygen_vec(&o_list);
-        o_list = Vec::new();
+        o_list.clear();
         o_list = tmp;
     }
     oxygen = bin_vec_to_dec(&o_list[0]);
@@ -55,8 +55,6 @@ fn process_oxygen_vec(data: &Vec<Vec<u32>>) -> Vec<Vec<u32>> {
             break;
         }
         let ones = find_number_of_ones(&new_data);
-        print!("i = {}, len = {}, ", i, tmp.len());
-        print_vec(&ones);
         new_data.clear();
         let pick: u32;
         let size: u32 = tmp.len().try_into().unwrap();
@@ -75,10 +73,10 @@ fn process_oxygen_vec(data: &Vec<Vec<u32>>) -> Vec<Vec<u32>> {
 }
 
 fn co2_rating(data: &Vec<Vec<u32>>) -> u32 {
-    let mut co2: u32 = 0;
+    let co2: u32;
     let mut co2_list: Vec<Vec<u32>> = data.to_vec();
-    let mut length = co2_list.len();
-    while true {
+    let mut length;
+    loop {
         let tmp: Vec<Vec<u32>> = process_co2_vec(&co2_list);
         length = tmp.len();
         co2_list.clear();
@@ -100,8 +98,6 @@ fn process_co2_vec(data: &Vec<Vec<u32>>) -> Vec<Vec<u32>> {
             break;
         }
         let ones = find_number_of_ones(&new_data);
-        print!("i = {}, len = {}, ", i, tmp.len());
-        print_vec(&ones);
         new_data.clear();
         let pick: u32;
         let size: u32 = tmp.len().try_into().unwrap();
@@ -148,7 +144,7 @@ fn main() -> io::Result<()> {
     Ok(())
 }
 
-fn print_vec(data: &Vec<u32>) {
+fn _print_vec(data: &Vec<u32>) {
     for d in data {
         print!("{} ", d)
     }

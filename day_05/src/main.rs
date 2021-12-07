@@ -90,9 +90,8 @@ fn part_b(starts: &Vec<(usize, usize)>, ends: &Vec<(usize, usize)>) {
             }
         } else if diff(x1, x2) == diff(y1, y2) {
             let mut start_x = x1;
-            let mut end_x = x2;
+            let end_x = x2;
             let mut start_y = y1;
-            let mut end_y = y2;
             if x1 > x2 && y1 > y2 {
                 for _i in 0..diff(start_x, end_x) + 1 {
                     map[start_y][start_x] += 1;
@@ -182,7 +181,7 @@ fn string_to_cords(s: &str) -> (usize, usize) {
     return cords;
 }
 
-fn print_matrix(data: Vec<Vec<usize>>) {
+fn _print_matrix(data: Vec<Vec<usize>>) {
     for i in 0..10 {
         for j in 0..10 {
             print!("{:3}", data[i][j])

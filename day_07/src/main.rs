@@ -54,8 +54,8 @@ fn part_b(data: &str) {
 }
 
 fn count_fuel_b(pos: u32, aim: u32) -> u32 {
-    let mut start: u32;
-    let mut end: u32;
+    let start: u32;
+    let end: u32;
     if pos > aim {
         start = aim;
         end = pos;
@@ -73,7 +73,6 @@ fn count_fuel_b(pos: u32, aim: u32) -> u32 {
 fn main() -> io::Result<()> {
     let file = File::open("data.txt")?;
     let reader = BufReader::new(file);
-    let mut fishes: Vec<u32> = Vec::new();
     let mut data: String = String::new();
     for line in reader.lines() {
         let l = line?;
