@@ -21,17 +21,17 @@ fn part_b(data: &str) {
 }
 
 fn solve(data: &str, days: u32) -> u64 {
-    let mut age_counts = [0; 9];
+    let mut days_to_birth = [0; 9];
 
     data.split(",")
         .map(|s| s.trim().parse::<usize>().unwrap())
-        .for_each(|age| age_counts[age] += 1);
+        .for_each(|age| days_to_birth[age] += 1);
 
     for _ in 1..=days {
-        age_counts.rotate_left(1);
-        age_counts[6] += age_counts[8];
+        days_to_birth.rotate_left(1);
+        days_to_birth[6] += days_to_birth[8];
     }
-    return age_counts.iter().sum();
+    return days_to_birth.iter().sum();
 }
 
 fn main() -> io::Result<()> {
