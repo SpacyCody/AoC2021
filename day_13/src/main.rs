@@ -31,7 +31,6 @@ fn main() {
     part_a(data);
     println!("Part B");
     part_b(data);
-
 }
 
 fn create_paper(data: &str) -> Vec<Vec<char>> {
